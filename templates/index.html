@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food SCD app</title>
+</head>
+  <p>Hello world!</p>
+
+  <script type="text/javascript" >
+
+    const UserAction = async(name) => {
+       const response = await fetch('http://0.0.0.0:5000/food/items/' + name );
+       const myJson = await response.json();
+       console.log(myJson)
+       alert(myJson["Status"]);
+    };
+
+  </script>
+  <form>
+      Food item :<br>
+      <input type="text" name="Food item" id="food_item"></br>
+      <input type="button" onclick="UserAction(document.getElementById('food_item').value)" value="Submit">
+
+  </form>
+
+
+
+</body>
+</html>
