@@ -9,10 +9,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-# @app.route("/")
-# def index():
-#     return "Hello World!"
-
 
 
 
@@ -47,7 +43,3 @@ def test_db_connection(name):
 
 if __name__ == "__main__":
     app.run(port=5000, host="0.0.0.0")
-    # print(print_list())
-    # print(create_legal_list())
-    # print(create_illegal_list())
-    #test_db_connection('almonds')

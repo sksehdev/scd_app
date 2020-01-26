@@ -12,5 +12,4 @@ COPY ./requirements.txt /app
 RUN pip3 install -r requirements.txt
 # copies everything inside this directory(scd_app) into app folder inside root of docker container
 COPY . /app
-#ENTRYPOINT ["python3"]
 CMD ["python3", "app.py"]
