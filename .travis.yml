@@ -4,6 +4,4 @@ services:
 
 before_install:
   - docker build -t sksehdev/scd_app .
-
-script:
-  - docker run sksehdev/scd_app
+  - docker run -p 5000:5000 sksehdev/scd_app
