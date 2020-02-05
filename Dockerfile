@@ -3,7 +3,7 @@ RUN apt-get update -y
 #RUN apt-get install -y python-pip python-dev build-essential
 RUN apt-get install -y python3-pip
 RUN apt install curl -y
-#working directory inside docker
+#working directory inside docker container
 WORKDIR /app
 # copies everything inside this directory(scd_app) into app folder inside root of docker container
 # only requirements is copied first to app folder inside docker
