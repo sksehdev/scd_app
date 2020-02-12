@@ -3,6 +3,8 @@ import json
 from typing import List
 from contextlib import contextmanager
 
+
+
 @contextmanager
 def create_db():
     try:
@@ -34,6 +36,7 @@ def populatedb(data):
 
 if __name__ == "__main__":
     create_db()
-    create_table()
+    #create_table()
     scd_list = load_scd_list()
+    print(scd_list)
     populatedb(scd_list)
