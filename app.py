@@ -27,6 +27,14 @@ def access_db(DB):
         conn.commit()
         conn.close()
 
+
+def get_data_from_table(foodname, dbname, tablename):
+    with access_db(dbname) as cursor:
+        query = f'SELECT Status FROM {tablename} WHERE Food=?'
+        result = cursor.execute(query, (foodname.lower(),))
+        row = result.fetchone()
+    return row
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -35,10 +43,7 @@ def index():
 @app.route("/food/items/<string:name>")
 def get_status(name):
     if re.match('[a-zA-Z]', name):
-        with access_db(SCD_DB) as cursor:
-            query = "SELECT Status FROM SCD_LIST WHERE Food=?"
-            result = cursor.execute(query, (name.lower(),))
-            row = result.fetchone()
+        row = get_data_from_table(name, SCD_DB, "SCD_LIST")
         if row:
             return {"Food": name, "Status": row[0]}
         return {"Status": "Food is not in list"}
@@ -62,4 +67,4 @@ if __name__ == "__main__":
     print(test_db_connection("almonds", SCD_DB, 'SCD_LIST'))
     first_launch(FODMAP_DB)
     print(test_db_connection("almonds", FODMAP_DB, 'FODMAP_LIST'))
-    # app.run(port=5000, host="0.0.0.0")
+    app.run(port=5000, host="0.0.0.0")
